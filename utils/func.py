@@ -13,3 +13,13 @@ def read_json():
             return file_lst
     except IOError:
         print('Ошибка при чтении файла')
+
+
+def trans_date(value):
+    """
+    Модифицирует представление даты
+    :param value:
+    :return:
+    """
+    date = str(value)
+    return f"{date[8:10]}.{date[5:7]}.{date[0:4]}"
