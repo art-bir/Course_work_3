@@ -23,3 +23,19 @@ def trans_date(value):
     """
     date = str(value)
     return f"{date[8:10]}.{date[5:7]}.{date[0:4]}"
+
+
+def check_alpha_digit(value):
+    """
+    Разделяет строку на название карты и номер счёта
+    :param value: str
+    :return: word, digit
+    """
+    word = ''
+    digit = ''
+    for i in value:
+        if i.isdigit():
+            digit += i
+        else:
+            word += i
+    return word, digit
