@@ -39,3 +39,17 @@ def check_alpha_digit(value):
         else:
             word += i
     return word, digit
+
+def trans_card_account(value, mod='to'):
+    """
+    Маскирует номер карты или счета в зависимости от выбора from или to
+    :param value: str
+    :param mod: Модификатор направления транзакции from или to
+    :return: str
+    """
+    word, digit = check_alpha_digit(value)
+    if mod == 'to':
+        word, digit = check_alpha_digit(value)
+        return f"{word} **{digit[-4:]}"
+    elif mod == 'from':
+        return f"{word}{digit[0:4]} {digit[5:7]}** **** {digit[-4:]}"
