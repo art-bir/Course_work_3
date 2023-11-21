@@ -40,6 +40,7 @@ def check_alpha_digit(value):
             word += i
     return word, digit
 
+
 def trans_card_account(value, mod='to'):
     """
     Маскирует номер карты или счета в зависимости от выбора from или to
@@ -53,8 +54,6 @@ def trans_card_account(value, mod='to'):
         return f"{word} **{digit[-4:]}"
     elif mod == 'from':
         return f"{word}{digit[0:4]} {digit[5:7]}** **** {digit[-4:]}"
-
-
 
 
 def print_transactions(transactions_number):
@@ -85,3 +84,6 @@ def print_transactions(transactions_number):
                 {from_account} -> {to_account}
                 {tran_dict['operationAmount']['amount']} {tran_dict['operationAmount']['currency']['name']}
             """)
+
+
+print_transactions(5)

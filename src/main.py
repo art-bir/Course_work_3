@@ -1,4 +1,4 @@
-from utils import *
+from utils import print_transactions
 
 
 def main():
