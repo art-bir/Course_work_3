@@ -153,4 +153,4 @@ testing = ["fields", "hunter", "process-tests", "pytest-xdist", "six", "virtuale
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "a3349c18149099bea6fd0e63066f640103ddac3fea57949904bb5d1a734d390a"
+content-hash = "69167d51e4572e911fae1e6e14edd7bfda5a6b11e4379a6b2c44be934b101ecc"
