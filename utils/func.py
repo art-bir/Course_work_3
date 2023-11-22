@@ -56,34 +56,6 @@ def trans_card_account(value, mod='to'):
         return f"{word}{digit[0:4]} {digit[5:7]}** **** {digit[-4:]}"
 
 
-def print_transactions(transactions_number):
-    """
-    Возвращает строку N последних выполненнынх (EXECUTED) транзакций
-    :param transactions_number: количество транзакций
-    :return:
-    """
-    tran_list = read_json()
-    for i in range(transactions_number):
-        tran_dict = tran_list[i]
-
-        if tran_dict['state'] == 'EXECUTED':
-
-            try:
-                from_account = trans_card_account(tran_dict['from'], 'from')
-                to_account = trans_card_account(tran_dict['to'], 'to')
-                date = trans_date(tran_dict['date'])
-            except KeyError:
-                print(f"""
-                {date} {tran_dict['description']}
-                 -> {to_account}
-                {tran_dict['operationAmount']['amount']} {tran_dict['operationAmount']['currency']['name']}
-            """)
-            finally:
-                print(f"""
-                {date} {tran_dict['description']}
-                {from_account} -> {to_account}
-                {tran_dict['operationAmount']['amount']} {tran_dict['operationAmount']['currency']['name']}
-            """)
 
 
-print_transactions(5)
+
