@@ -7,28 +7,33 @@ def main():
     # Количество транзакций
     transactions_number = 5
 
-    tran_list = read_json()
+    json_list = read_json('../src/operations.json')
+
+    sorted_list_by_date = sort_list_by_date(json_list)
+
+    transactions_list = get_executed_transaction_list(sorted_list_by_date)
+
     for i in range(transactions_number):
-        tran_dict = tran_list[i]
+        one_transaction_dic = transactions_list[i]
 
         # Проверяет EXECUTED
-        if tran_dict['state'] == 'EXECUTED':
-            to_account = trans_card_account(tran_dict['to'], 'to')
-            date = trans_date(tran_dict['date'])
+        if one_transaction_dic['state'] == 'EXECUTED':
+            to_account = masks_number(one_transaction_dic['to'], 'to')
+            date = trans_date(one_transaction_dic['date'])
 
-            # Проверяет наличие from в словаре
-            if list(tran_dict)[5] == 'from':
-                from_account = trans_card_account(tran_dict['from'], 'from')
+            key_from = 5
+            if list(one_transaction_dic)[key_from] == 'from':
+                from_account = masks_number(one_transaction_dic['from'], 'from')
                 print(f"""
-                     {date} {tran_dict['description']}
+                     {date} {one_transaction_dic['description']}
                      {from_account} -> {to_account}
-                     {tran_dict['operationAmount']['amount']} {tran_dict['operationAmount']['currency']['name']}
+                     {one_transaction_dic['operationAmount']['amount']} {one_transaction_dic['operationAmount']['currency']['name']}
                  """)
             else:
                 print(f"""
-                      {date} {tran_dict['description']}
+                      {date} {one_transaction_dic['description']}
                        -> {to_account}
-                      {tran_dict['operationAmount']['amount']} {tran_dict['operationAmount']['currency']['name']}
+                      {one_transaction_dic['operationAmount']['amount']} {one_transaction_dic['operationAmount']['currency']['name']}
                   """)
 
 

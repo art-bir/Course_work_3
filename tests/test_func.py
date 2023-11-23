@@ -12,7 +12,7 @@ def test_trans_date(a, expected_result):
                                                 ('MasterCard 7158300734726758', ('MasterCard ', '7158300734726758')),
                                                 ('Счет 75106830613657916952', ('Счет ', '75106830613657916952'))])
 def test_check_alpha_digit(a, expected_result):
-    assert check_alpha_digit(a) == expected_result
+    assert split_name_and_number(a) == expected_result
 
 
 @pytest.mark.parametrize('a, b, expected_result', [('Maestro 1596837868705199', 'from', 'Maestro 1596 37** **** 5199'),
@@ -21,4 +21,4 @@ def test_check_alpha_digit(a, expected_result):
                                                     'MasterCard 7158 00** **** 6758'),
                                                    ('MasterCard 7158300734726758', 'to', 'MasterCard  **6758')])
 def test_trans_card_account(a, b, expected_result):
-    assert trans_card_account(a, b) == expected_result
+    assert masks_number(a, b) == expected_result
