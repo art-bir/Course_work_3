@@ -13,7 +13,7 @@ def read_json(file):
             file_lst = json.loads(file_str)
             return file_lst
     except IOError:
-        print()
+        print("Ошибка при чтении файла")
 
 
 def trans_date(value):
