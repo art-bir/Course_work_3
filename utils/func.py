@@ -7,14 +7,13 @@ def read_json(file):
     Читает файл json.py и возвращает список словарей
     :return: list
     """
-
     try:
         with open(file, 'r', encoding='cp65001') as file:
             file_str = file.read()
             file_lst = json.loads(file_str)
             return file_lst
     except IOError:
-        print('Ошибка при чтении файла')
+        print()
 
 
 def trans_date(value):
@@ -72,7 +71,7 @@ def change_string_to_date(dic: dict, format_date='%Y-%m-%dT%X'):
 
 def sort_list_by_date(data: list, reverse=True) -> list:
     """
-    Сортирует список по убыванию исключая пустые словари
+    Сортирует список по убыванию даты и времени транзакции исключая пустые словари
     :return: ...
     """
     clear_list = []
